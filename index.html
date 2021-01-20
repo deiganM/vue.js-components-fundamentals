@@ -3,25 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue.js Components Fundamentals</title>
+  <title>Vue.js Slots Fundamentals</title>
 </head>
 <body>
   <div id="app">
-    <h1>Vue.js Components Fundamentals</h1>
-    <click-counter></click-counter>
-    <click-counter></click-counter>
-    <click-counter></click-counter>
-    <click-counter></click-counter>
+    <h1>Vue.js Slots Fundamentals</h1>
+    <todo-item>
+      Buy bananas
+      <template #description>
+        <p>Bananas are good for your health</p>
+      </template>
+    </todo-item>
   </div>
 
-  <script type="text/x-template" id="click-counter-template">
+  <script type="text/x-template" id="todo-item-template">
     <div>
-      <p>the count is:</p>
-      <button @click="count++">{{ count }}</button>
+      <input type="checkbox" v-model="completed">
+      <span :class="{ done: completed }">
+        <slot></slot>
+      </span>
+      <slot name="description"></slot>
     </div>
   </script>
 
   <script src="https://unpkg.com/vue"></script>
   <script src="app.js"></script>
+  <style>
+    .done {
+      color: green;
+      text-decoration: line-through;
+    }
+  </style>
 </body>
 </html>

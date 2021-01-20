@@ -1,8 +1,8 @@
-Vue.component('click-counter', {
-  template: '#click-counter-template',
-  data () {
+Vue.component('todo-item', {
+  template: '#todo-item-template',
+  data() {
     return {
-      count: 0
+      completed: false
     }
   }
 })
